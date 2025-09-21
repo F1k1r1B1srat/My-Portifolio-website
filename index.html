@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fikir Bisrat - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Added React Three Fiber dependencies for 3D elements -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
+</head>
+<body>
+    <!-- Added 3D background canvas -->
+    <canvas id="threejs-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-palette"></i>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hello, It's Me</h1>
+                <h2>Fikir Bisrat</h2>
+                <p>I'm a <span class="highlight">fullStack developer|Technical artist</span></p>
+                <p class="hero-description">Please hold your breath as we dive into a world full of creativity with Fikir Bisrat.</p>
+                
+                <div class="social-icons">
+                    <!-- Changed Facebook to Telegram and Twitter to GitHub -->
+                    <a href="#" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                
+                <button class="cta-button">Download CV</button>
+            </div>
+            <div class="hero-image">
+                <div class="character-circle">
+                    <img src="/asset/sticker.webp" alt="Fikir Bisrat Character" class="character-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/asset/sticker.webp" alt="Fikir Bisrat Character">
+                </div>
+                <div class="about-text">
+                    <h2>About <span class="highlight">Me</span></h2>
+                    <h3>fullStack developer & Technical artist!</h3>
+                    <p>Hello, I am Fikir Bisrat, I am a fourth-year student at Hilcoe College and I live in Ethiopia, Addis Ababa. I am an ambitious person and I have many goals. I want to be the best and I found my specialty, which is full-stack development and technical artistry. Personally, I think a heart should be filled with love in addition to working as a freelancer. I won the admiration of many clients.</p>
+                    <button class="cta-button" onclick="openFlipBookModal()">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our <span class="highlight">Services</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Artist</h3>
+                    <p>Art is an attempt to stimulate what is happening on the ground in a way that encourages people to do what is good and terrifies them from doing what is bad.</p>
+                    <button class="service-button">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>3D Design</h3>
+                    <p>Get a 3D design that makes you stand out and attract clients in your target market. We work on social Environmental designs, brands, logos, and many other designs.</p>
+                    <button class="service-button">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Marketing</h3>
+                    <p>We give you marketing advice and how to attract customers through social media and how to make your work compatible with your family.</p>
+                    <button class="service-button">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>fullStack developer</h3>
+                    <p>Full-stack development combines front-end and back-end technologies to create complete web applications that are both functional and visually appealing.</p>
+                    <button class="service-button">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Latest <span class="highlight">Project</span></h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/asset/IMG_2945.PNG" alt="Brand Identity Project">
+                    <div class="gallery-overlay">
+                        <h4>Sketchs</h4>
+                        <p>Beautiful Portraits</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/asset/IMG_2719.JPG" alt="Canvas Art">
+                    <div class="gallery-overlay">
+                        <h4>Canvas Art</h4>
+                        <p>Authentic canvas arts</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/asset/Buildings.png" alt="3D Design">
+                    <div class="gallery-overlay">
+                        <h4>3D Design</h4>
+                        <p>Cool 3D designs</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/asset/image_2025-09-19_15-16-23.png" alt="UI/UX Design">
+                    <div class="gallery-overlay">
+                        <h4>UI/UX Design</h4>
+                        <p>Creative front-end designs</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/asset/image_2025-09-19_15-20-53.png" alt="Web Design">
+                    <div class="gallery-overlay">
+                        <h4>Web Design</h4>
+                        <p>Professional websites</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/asset/image_2025-09-19_15-24-54.png" alt="FullStack Development">
+                    <div class="gallery-overlay">
+                        <h4>Full-Stack system</h4>
+                        <p>Responsive and creative developments</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/asset/image_2025-09-19_15-19-09.png" alt="Logo Design">
+                    <div class="gallery-overlay">
+                        <h4>Form Designs</h4>
+                        <p>Classy form design templates</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact <span class="highlight">Me!</span></h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Email Subject" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Flip Book Modal for detailed about information -->
+    <div id="flipBookModal" class="flip-book-modal">
+        <div class="flip-book-container">
+            <button class="close-flip-book">&times;</button>
+            <div class="flip-book">
+                <div class="page-container">
+                    <!-- Page 1 -->
+                    <div class="page active" data-page="1">
+                        <div class="page-content">
+                            <h2>About Fikir Bisrat</h2>
+                            <div class="page-image">
+                                <img src="/asset/sticker.webp" alt="Fikir Bisrat">
+                            </div>
+                            <p>Welcome to my story! I'm Fikir Bisrat, a passionate fullStack developer and technical artist from Addis Ababa, Ethiopia.</p>
+                            <div class="page-number">1 / 5</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Page 2 -->
+                    <div class="page" data-page="2">
+                        <div class="page-content">
+                            <h2>My Journey</h2>
+                            <p>Currently in my fourth year at Hilcoe College, I've discovered my true calling in the intersection of technology and creativity. My journey began with a simple curiosity about how digital worlds are created.</p>
+                            <p>Through countless hours of learning, experimenting, and creating, I've developed expertise in both front-end and back-end development, while maintaining my artistic vision.</p>
+                            <div class="page-number">2 / 5</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Page 3 -->
+                    <div class="page" data-page="3">
+                        <div class="page-content">
+                            <h2>Technical Skills</h2>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Full-Stack Development</h4>
+                                    <p>React, Node.js, MongoDB, Express</p>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fas fa-palette"></i>
+                                    <h4>Digital Art</h4>
+                                    <p>3D Modeling, UI/UX Design, Illustration</p>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <h4>Responsive Design</h4>
+                                    <p>Mobile-first approach, CSS Grid, Flexbox</p>
+                                </div>
+                            </div>
+                            <div class="page-number">3 / 5</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Page 4 -->
+                    <div class="page" data-page="4">
+                        <div class="page-content">
+                            <h2>Philosophy & Vision</h2>
+                            <p>I believe that technology should be beautiful, functional, and accessible. My approach combines technical excellence with artistic sensibility to create digital experiences that not only work flawlessly but also inspire and delight users.</p>
+                            <p>As a freelancer, I've had the privilege of working with diverse clients, each project teaching me something new and pushing the boundaries of what's possible in web development and digital art.</p>
+                            <div class="page-number">4 / 5</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Page 5 -->
+                    <div class="page" data-page="5">
+                        <div class="page-content">
+                            <h2>Let's Create Together</h2>
+                            <p>I'm always excited about new challenges and opportunities to create something amazing. Whether you need a full-stack web application, stunning digital art, or a combination of both, I'm here to bring your vision to life.</p>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>fikir.bisrat@email.com</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Addis Ababa, Ethiopia</span>
+                                </div>
+                            </div>
+                            <p class="closing-text">Thank you for taking the time to learn about me. Let's create something extraordinary together!</p>
+                            <div class="page-number">5 / 5</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation controls -->
+                <div class="flip-controls">
+                    <button class="prev-page" id="prevPage">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="next-page" id="nextPage">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function openFlipBookModal() {
+            document.getElementById("flipBookModal").style.display = "block";
+        }
+
+        document.querySelector(".close-flip-book").addEventListener("click", function() {
+            document.getElementById("flipBookModal").style.display = "none";
+        });
+
+        document.getElementById("prevPage").addEventListener("click", function() {
+            const pages = document.querySelectorAll(".page");
+            let currentPage = document.querySelector(".page.active");
+            let currentPageIndex = Array.from(pages).indexOf(currentPage);
+
+            if (currentPageIndex > 0) {
+                currentPage.classList.remove("active");
+                pages[currentPageIndex - 1].classList.add("active");
+            }
+        });
+
+        document.getElementById("nextPage").addEventListener("click", function() {
+            const pages = document.querySelectorAll(".page");
+            let currentPage = document.querySelector(".page.active");
+            let currentPageIndex = Array.from(pages).indexOf(currentPage);
+
+            if (currentPageIndex < pages.length - 1) {
+                currentPage.classList.remove("active");
+                pages[currentPageIndex + 1].classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>
