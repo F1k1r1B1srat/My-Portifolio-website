@@ -242,7 +242,7 @@ body {
 
 /* Added hover effect to change sticker image */
 .character-circle:hover .character-img {
-  content: url("/asset/sticker2.webp");
+  content: url("asset/sticker2.webp");
 }
 
 /* About Section */
