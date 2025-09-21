@@ -593,11 +593,10 @@ body {
 }
 
 .page-content {
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 1.5rem;
+  justify-content: space-between;
   color: #2c1810;
 }
 
@@ -608,27 +607,28 @@ body {
   text-align: center;
 }
 
-.page-content p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-  color: #2c1810;
-  text-align: center;
-  display: block;
-}
-
 .page-image {
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 }
 
 .page-image img {
   width: 130px;
   height: 150px;
-  border-radius: 20%;
+  border-radius: 20%;                              /*I AM HERE*/
   object-fit: cover;
   border: 12px solid #e9cfc6db;
-  overflow: visible;
+   overflow: visible;
+   
+}
+
+.page-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: -1rem;
+  color: #2c1810;
+  text-align: center;
+   display: flex;
 }
 
 .skills-grid {
@@ -664,7 +664,6 @@ body {
   font-size: 0.9rem;
   color: #666;
   margin: 0;
-  text-align: left;
 }
 
 .contact-info {
@@ -689,9 +688,6 @@ body {
   text-align: center;
   color: #8b4513;
   font-weight: 500;
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
 }
 
 .page-number {
@@ -728,11 +724,7 @@ body {
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  min-width: 120px;
-  flex: 1;
-  max-width: 140px;
 }
 
 .prev-page:hover,
@@ -852,262 +844,128 @@ body {
     box-shadow: 0 20px 40px rgba(255, 107, 53, 0.7), 0 0 30px rgba(255, 107, 53, 0.5);
   }
 
-  /* Enhanced responsive flip book */
+  /* Responsive flip book */
   .flip-book-container {
     width: 95%;
     height: 95%;
     margin: 2.5% auto;
-    border-radius: 15px;
   }
 
   .flip-book {
-    padding: 30px 15px 50px;
+    padding: 40px 20px 60px;
   }
 
   .page {
     padding: 20px;
-    overflow-y: auto;
-  }
-
-  .page-content {
-    gap: 1.2rem;
   }
 
   .page-content h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
   }
 
   .page-content p {
     font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 1rem;
-  }
-
-  .page-image img {
-    width: 100px;
-    height: 120px;
   }
 
   .skills-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin: 1.5rem 0;
-  }
-
-  .skill-item {
-    flex-direction: row;
-    text-align: left;
-    padding: 1rem;
-  }
-
-  .skill-item h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .skill-item p {
-    font-size: 0.9rem;
   }
 
   .flip-controls {
-    gap: 0.8rem;
-    bottom: 15px;
+    gap: 1rem;
   }
 
   .prev-page,
   .next-page {
-    padding: 10px 18px;
+    padding: 10px 20px;
     font-size: 0.9rem;
-    min-height: 44px;
-    min-width: 100px;
-    max-width: 120px;
-  }
-
-  .page-number {
-    bottom: 15px;
-    right: 15px;
-    padding: 8px 14px;
-    font-size: 0.85rem;
-  }
-
-  .close-flip-book {
-    top: 15px;
-    right: 20px;
-    font-size: 1.8rem;
-    min-width: 44px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-info {
-    margin: 1.5rem 0;
-  }
-
-  .contact-item {
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 1rem;
-    padding: 0.6rem;
   }
 }
 
 @media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .about-image {
+    width: 240px;
+    height: 240px;
+  }
+
+  /* Enhanced mobile social icons with stronger pop-out effects */
+  .social-icons {
+    gap: 2rem;
+  }
+
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  }
+
+  .social-icon:hover {
+    transform: translateY(-12px) scale(1.2);
+    box-shadow: 0 25px 50px rgba(255, 107, 53, 0.8), 0 0 35px rgba(255, 107, 53, 0.6);
+  }
+
   .flip-book-container {
     width: 98%;
     height: 98%;
     margin: 1% auto;
-    border-radius: 10px;
-  }
-
-  .flip-book {
-    padding: 25px 12px 45px;
-  }
-
-  .page {
-    padding: 16px;
-  }
-
-  .page-content {
-    gap: 1.2rem;
   }
 
   .page-content h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.8rem;
   }
 
   .page-content p {
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  .page-image img {
-    width: 80px;
-    height: 100px;
   }
 
   .skill-item {
-    padding: 0.8rem;
-    gap: 0.6rem;
-  }
-
-  .skill-item h4 {
-    font-size: 1rem;
-  }
-
-  .skill-item p {
-    font-size: 0.85rem;
-  }
-
-  .contact-item {
-    margin-bottom: 1rem;
-    padding: 0.6rem;
-  }
-
-  .flip-controls {
-    gap: 0.6rem;
-    bottom: 10px;
-  }
-
-  .prev-page,
-  .next-page {
-    padding: 8px 14px;
-    font-size: 0.85rem;
-    min-height: 44px;
-    min-width: 90px;
-    max-width: 110px;
-  }
-
-  .page-number {
-    bottom: 10px;
-    right: 10px;
-    padding: 6px 10px;
-    font-size: 0.8rem;
-  }
-
-  .close-flip-book {
-    top: 10px;
-    right: 15px;
-    font-size: 1.6rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
   }
 
   .contact-item {
     flex-direction: column;
+    text-align: center;
     gap: 0.5rem;
   }
 }
 
 @media (max-width: 320px) {
-  .flip-book-container {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    border-radius: 0;
+  .character-circle {
+    width: 200px;
+    height: 200px;
   }
 
-  .flip-book {
-    padding: 20px 10px 40px;
+  .character-img {
+    width: 160px;
+    height: 185px;
+    transform: translateY(-10px);
   }
 
-  .page {
-    padding: 12px;
+  .hero-content h1 {
+    font-size: 1.3rem;
   }
 
-  .page-content {
-    gap: 1rem;
-  }
-
-  .page-content h2 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-  }
-
-  .page-content p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 0.8rem;
-  }
-
-  .page-image img {
-    width: 70px;
-    height: 85px;
-  }
-
-  .skill-item {
-    padding: 0.6rem;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .prev-page,
-  .next-page {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-    min-width: 80px;
-    max-width: 100px;
-  }
-}
-
-/* Added touch-friendly enhancements */
-@media (hover: none) and (pointer: coarse) {
-  .flip-controls button {
-    min-height: 48px;
-    min-width: 48px;
-  }
-
-  .close-flip-book {
-    min-height: 48px;
-    min-width: 48px;
-  }
-
-  .social-icon {
-    min-height: 48px;
-    min-width: 48px;
+  .hero-content h2 {
+    font-size: 1.8rem;
   }
 }
 
