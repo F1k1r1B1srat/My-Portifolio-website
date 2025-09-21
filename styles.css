@@ -593,10 +593,11 @@ body {
 }
 
 .page-content {
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap:1.5rem;
   color: #2c1810;
 }
 
@@ -625,10 +626,10 @@ body {
 .page-content p {
   font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: -1rem;
+  margin-bottom: 1rem;
   color: #2c1810;
   text-align: center;
-   display: flex;
+   display: block;
 }
 
 .skills-grid {
@@ -857,6 +858,10 @@ body {
 
   .page {
     padding: 20px;
+    overflow-y:auto;
+  }
+  .page-content {
+    gap: 1.2rem;
   }
 
   .page-content h2 {
@@ -865,6 +870,9 @@ body {
 
   .page-content p {
     font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    
   }
 
   .skills-grid {
