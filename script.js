@@ -162,8 +162,8 @@ const characterImg = document.querySelector(".character-img")
 const characterCircle = document.querySelector(".character-circle")
 
 if (characterImg && characterCircle) {
-  const originalSrc = "/asset/sticker.webp"
-  const hoverSrc = "/asset/sticker2.webp"
+  const originalSrc = "asset/sticker.webp"
+  const hoverSrc = "asset/sticker2.webp"
 
   characterCircle.addEventListener("mouseenter", () => {
     characterImg.src = hoverSrc
@@ -179,8 +179,8 @@ const aboutImg = document.querySelector(".about-image img")
 const aboutImageContainer = document.querySelector(".about-image")
 
 if (aboutImg && aboutImageContainer) {
-  const originalSrc = "/asset/sticker.webp"
-  const hoverSrc = "/asset/sticker2.webp"
+  const originalSrc = "asset/sticker.webp"
+  const hoverSrc = "asset/sticker2.webp"
 
   aboutImageContainer.addEventListener("mouseenter", () => {
     aboutImg.src = hoverSrc
