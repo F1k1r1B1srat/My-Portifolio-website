@@ -585,6 +585,7 @@ body {
   opacity: 0;
   transform: rotateY(-90deg);
   backface-visibility: hidden;
+  overflow-y:auto;
 }
 
 .page.active {
@@ -613,6 +614,7 @@ body {
 }
 
 .page-image img {
+  max-width: 100%;
   width: 130px;
   height: 150px;
   border-radius: 20%;                              /*I AM HERE*/
@@ -625,10 +627,9 @@ body {
 .page-content p {
   font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: -1rem;
+  margin-bottom: 1rem;
   color: #2c1810;
   text-align: center;
-   display: flex;
 }
 
 .skills-grid {
@@ -856,7 +857,8 @@ body {
   }
 
   .page {
-    padding: 20px;
+    padding: 20px 20px 80px 20px;
+    overflow-y: auto;
   }
 
   .page-content h2 {
@@ -880,6 +882,11 @@ body {
   .next-page {
     padding: 10px 20px;
     font-size: 0.9rem;
+  }
+  .page-image img {
+    width: 110px;
+    height: 130px;
+    border: 10px solid #e9cfc6db;
   }
 }
 
@@ -946,6 +953,32 @@ body {
     text-align: center;
     gap: 0.5rem;
   }
+  .page {
+    padding: 15px 15px 70px 15px;
+    overflow-y: auto;
+  }
+  .page-image img {
+    width: 90px;
+    height: 110px;
+    border: 8px solid #e9cfc6db;
+  }
+  .flip-controls {
+    gap: 0.5rem;
+    bottom: 15px;
+  }
+  .prev-page,
+  .next-page {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .page-number {
+    bottom: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 320px) {
@@ -966,6 +999,61 @@ body {
 
   .hero-content h2 {
     font-size: 1.8rem;
+  }
+  .flip-book-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .flip-book {
+    padding: 30px 10px 50px;
+  }
+
+  .page {
+    padding: 10px 10px 60px 10px;
+    overflow-y: auto;
+  }
+
+  .page-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .page-image img {
+    width: 70px;
+    height: 90px;
+    border: 6px solid #e9cfc6db;
+  }
+
+  .flip-controls {
+    gap: 0.3rem;
+    bottom: 10px;
+  }
+
+  .prev-page,
+  .next-page {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .page-number {
+    bottom: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+
+  .close-flip-book {
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
   }
 }
 
