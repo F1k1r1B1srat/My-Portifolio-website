@@ -50,55 +50,59 @@ window.addEventListener("scroll", () => {
   })
 })
 
-// Contact form submission
-document.querySelector(".contact-form").addEventListener("submit", async function (e) {
-  e.preventDefault()
+// Load and initialize EmailJS
+(function() {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js';
+    script.onload = function() {
+        emailjs.init("57fGguTWnCl-wJIuq");
+        setupContactForm();
+    };
+    document.head.appendChild(script);
+})();
 
-  const formStatus = document.getElementById("formStatus")
-  const submitButton = this.querySelector('button[type="submit"]')
-  const originalButtonText = submitButton.textContent
+function setupContactForm() {
+    const form = document.getElementById("contactForm");
+    if (!form) return;
 
-  // Show loading state
-  submitButton.textContent = "Sending..."
-  submitButton.disabled = true
-  formStatus.textContent = ""
-  formStatus.className = "form-status"
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        
+        const status = document.getElementById("formStatus");
+        const button = this.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
 
-  try {
-    // Create FormData object
-    const formData = new FormData(this)
+        button.textContent = "Sending...";
+        button.disabled = true;
+        status.textContent = "";
+        status.className = "form-status";
 
-    // Send form data to PHP handler
-    const response = await fetch("contact_handler.php", {
-      method: "POST",
-      body: formData,
-    })
+        // Add timestamp for template
+        const timeInput = document.createElement('input');
+        timeInput.type = 'hidden';
+        timeInput.name = 'time';
+        timeInput.value = new Date().toLocaleString();
+        this.appendChild(timeInput);
 
-    const result = await response.json()
-
-    if (result.success) {
-      formStatus.textContent = result.message
-      formStatus.className = "form-status success"
-      this.reset() // Clear form on success
-    } else {
-      formStatus.textContent = result.message
-      formStatus.className = "form-status error"
-    }
-  } catch (error) {
-    formStatus.textContent = "Network error. Please try again later."
-    formStatus.className = "form-status error"
-  } finally {
-    // Reset button state
-    submitButton.textContent = originalButtonText
-    submitButton.disabled = false
-
-    // Hide status message after 5 seconds
-    setTimeout(() => {
-      formStatus.textContent = ""
-      formStatus.className = "form-status"
-    }, 5000)
-  }
-})
+        emailjs.sendForm("service_vf74rd3", "template_4nxhei7", this)
+            .then(() => {
+                status.textContent = "✅ Thank you! Message sent successfully.";
+                status.className = "form-status success";
+                this.reset();
+            })
+            .catch((error) => {
+                console.error("EmailJS Error:", error);
+                status.textContent = "❌ Failed to send message. Please try again.";
+                status.className = "form-status error";
+            })
+            .finally(() => {
+                timeInput.remove();
+                button.textContent = originalText;
+                button.disabled = false;
+                setTimeout(() => status.textContent = "", 5000);
+            });
+    });
+}
 
 // Add scroll effect to navbar
 window.addEventListener("scroll", () => {
@@ -285,3 +289,19 @@ window.addEventListener("load", () => {
   // Small delay to ensure Three.js is loaded
   setTimeout(init3DBackground, 100)
 })
+console.log("🔄 DEBUG: Checking contact form setup...");
+
+setTimeout(() => {
+    const form = document.getElementById("contactForm");
+    const status = document.getElementById("formStatus");
+    
+    console.log("📝 Contact Form Element:", form);
+    console.log("📊 Status Element:", status);
+    console.log("🚀 EmailJS Loaded:", typeof emailjs !== 'undefined');
+    
+    if (form) {
+        console.log("✅ Form found, checking event listeners...");
+    } else {
+        console.error("❌ Form not found! Check HTML ID");
+    }
+}, 1000);
