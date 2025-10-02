@@ -31,24 +31,24 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 // Active navigation link highlighting
 window.addEventListener("scroll", () => {
-  let current = ""
-  const sections = document.querySelectorAll("section")
+  let current = "";
+  const sections = document.querySelectorAll("section");
 
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop
-    const sectionHeight = section.clientHeight
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
     if (scrollY >= sectionTop - 200) {
-      current = section.getAttribute("id")
+      current = section.getAttribute("id");
     }
-  })
+  });
 
   document.querySelectorAll(".nav-link").forEach((link) => {
-    link.classList.remove("active")
+    link.classList.remove("active");
     if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active")
+      link.classList.add("active");
     }
-  })
-})
+  });
+});
 
 // Load and initialize EmailJS
 (function() {
