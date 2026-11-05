@@ -1,355 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fikir Bisrat - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Added React Three Fiber dependencies for 3D elements -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fikir Bisrat — QA Engineer &amp; Product Designer</title>
+  <meta name="description" content="Fikir Bisrat is a QA engineer and product designer at Paceflow. End-to-end testing, UX review and product design for web apps. Based in Addis Ababa, working remotely.">
+  <meta property="og:title" content="Fikir Bisrat — QA Engineer & Product Designer">
+  <meta property="og:description" content="I test software the way a designer looks at it. QA engineer and product designer at Paceflow.">
+  <meta property="og:image" content="https://f1k1r1b1srat.github.io/My-Portifolio-website/asset/img/paceflow-tui-verdict.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="asset/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Added 3D background canvas -->
-    <canvas id="threejs-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></canvas>
-    
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-palette"></i>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#services" class="nav-link">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#gallery" class="nav-link">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a href="#top" class="brand" aria-label="Fikir Bisrat, home">
+        <span class="brand-mark">FB</span>
+        <span class="brand-name">Fikir Bisrat</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#art">Art</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn btn-small" href="asset/Fikir_Bisrat_Resume.pdf" download="Fikir_Bisrat_Resume.pdf">Résumé</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- Home Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Hello, It's Me</h1>
-                <h2>Fikir Bisrat</h2>
-                <p>I'm a <span class="highlight">fullStack developer|Technical artist</span></p>
-                <p class="hero-description">Please hold your breath as we dive into a world full of creativity with Fikir Bisrat.</p>
-                
-                 <div class="social-icons">
-                    <!-- Updated social media links with actual URLs -->
-                    <a href="https://t.me/Av0cad0rableee" class="social-icon" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="https://github.com/F1k1r1B1srat" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://instagram.com/fikir.bisrat" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com/in/fikir-bisrat-408785326" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                
-                 <!-- Added CV download functionality -->
-                <a href="asset/Fikir Bisrat CV.pdf" download="Fikir_Bisrat_CV.pdf" class="cta-button">Download CV</a>
-            </div>
-            <div class="hero-image">
-                <div class="character-circle">
-                    <img src="asset/sticker.webp" alt="Fikir Bisrat Character" class="character-img">
-                </div>
-            </div>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero container" id="top">
+      <div class="hero-text">
+        <p class="eyebrow mono">QA Engineer &amp; Product Designer · Addis Ababa · Remote</p>
+        <h1>I test software the way a&nbsp;designer looks at&nbsp;it.</h1>
+        <p class="lede">I find what breaks and what simply feels wrong, write it up so developers can fix it fast, and help design the better version. Currently QA engineer and product designer at <a href="https://www.paceflow.io/" target="_blank" rel="noopener">Paceflow</a>.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#work">See my work</a>
+          <a class="btn btn-ghost" href="asset/Fikir_Bisrat_Resume.pdf" download="Fikir_Bisrat_Resume.pdf">Download résumé</a>
         </div>
+        <ul class="hero-links">
+          <li><a href="https://www.linkedin.com/in/fikir-bisrat-408785326" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/F1k1r1B1srat" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.upwork.com/freelancers/~01dff4a7ccb112e91d" target="_blank" rel="noopener">Upwork</a></li>
+          <li><a href="mailto:fikirbisrat0@gmail.com">fikirbisrat0@gmail.com</a></li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sticker-frame">
+          <img class="sticker" src="asset/sticker.webp" data-hover="asset/sticker2.webp" alt="" width="273" height="512">
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="asset/sticker.webp" alt="Fikir Bisrat Character">
-                </div>
-                <div class="about-text">
-                    <h2>About <span class="highlight">Me</span></h2>
-                    <h3>fullStack developer & Technical artist!</h3>
-                    <p>Hello, I am Fikir Bisrat, I am a fourth-year student at Hilcoe College and I live in Ethiopia, Addis Ababa. I am an ambitious person and I have many goals. I want to be the best and I found my specialty, which is full-stack development and technical artistry. Personally, I think a heart should be filled with love in addition to working as a freelancer. I won the admiration of many clients.</p>
-                    <button class="cta-button" onclick="openFlipBookModal()">Read More</button>
-                </div>
-            </div>
-        </div>
+    <!-- PROOF STRIP -->
+    <section class="proof" aria-label="Where I've worked">
+      <div class="container proof-row">
+        <div><span class="mono label">Now</span><strong>Paceflow</strong><span>Product Dev &amp; QA</span></div>
+        <div><span class="mono label">2025</span><strong>CDI Tech Education</strong><span>SharePoint Consultant</span></div>
+        <div><span class="mono label">2024</span><strong>AFRICOM Technologies</strong><span>.NET Developer Intern</span></div>
+        <div><span class="mono label">2026</span><strong>Finalist</strong><span>Intl. Health Innovation Hackathon</span></div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our <span class="highlight">Services</span></h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Artist</h3>
-                    <p>Art is an attempt to stimulate what is happening on the ground in a way that encourages people to do what is good and terrifies them from doing what is bad.</p>
-                    <button class="service-button">Learn More</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-pen-nib"></i>
-                    </div>
-                    <h3>3D Design</h3>
-                    <p>Get a 3D design that makes you stand out and attract clients in your target market. We work on social Environmental designs, brands, logos, and many other designs.</p>
-                    <button class="service-button">Learn More</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Marketing</h3>
-                    <p>We give you marketing advice and how to attract customers through social media and how to make your work compatible with your family.</p>
-                    <button class="service-button">Learn More</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>fullStack developer</h3>
-                    <p>Full-stack development combines front-end and back-end technologies to create complete web applications that are both functional and visually appealing.</p>
-                    <button class="service-button">Learn More</button>
-                </div>
-            </div>
+    <!-- WORK -->
+    <section class="section container" id="work">
+      <header class="section-head">
+        <p class="eyebrow mono">01 · Selected work</p>
+        <h2>Things I've tested, designed and shipped</h2>
+      </header>
+
+      <article class="feature">
+        <div class="feature-media">
+          <figure class="shot" data-shots="asset/img/paceflow-tui-verdict.webp,asset/img/paceflow-tui-delivery.webp">
+            <img src="asset/img/paceflow-tui-verdict.webp" alt="Paceflow terminal dashboard prototype showing the Verdict tab: a model comparison table with colour-coded mainline reach and bug rate" width="1600" height="913" loading="lazy">
+          </figure>
+          <div class="shot-tabs" role="tablist" aria-label="Prototype screens">
+            <button role="tab" aria-selected="true" data-i="0">Verdict</button>
+            <button role="tab" aria-selected="false" data-i="1">Delivery</button>
+          </div>
         </div>
+        <div class="feature-body">
+          <p class="mono tag-line">Paceflow · Product design · 2026</p>
+          <h3>Terminal dashboard for Paceflow's open-source CLI</h3>
+          <p>Paceflow's CLI tells engineers whether their AI-assisted code actually reaches production and holds up. I designed the interactive prototype for its terminal dashboard: four report views, keyboard and mouse navigation, and a colour system where green, amber and red appear only when a metric crosses a threshold.</p>
+          <p>The prototype is the design reference the production Rust TUI implements.</p>
+          <ul class="chips"><li>Information design</li><li>Interaction design</li><li>HTML / CSS / JS prototype</li></ul>
+          <div class="links">
+            <a href="https://github.com/F1k1r1B1srat/terminal-design" target="_blank" rel="noopener">Prototype repo ↗</a>
+            <a href="https://github.com/PaceFlow/ai-engineering-analytics" target="_blank" rel="noopener">Paceflow CLI ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="cards">
+        <article class="card">
+          <p class="mono tag-line">Paceflow · QA · 2026 – now</p>
+          <h3>End-to-end QA across the product</h3>
+          <p>I test new features and releases across Paceflow's web app, backend and marketing site, a platform that pulls delivery data from Jira, Linear, ClickUp, GitHub, Bitbucket and Slack. Bugs go into Linear with steps to reproduce, expected vs. actual results and evidence; fixes get verified on the pull request.</p>
+          <ul class="chips"><li>Linear</li><li>Confluence</li><li>GitHub</li><li>Slack</li></ul>
+        </article>
+        <article class="card">
+          <p class="mono tag-line">Paceflow · Web design · 2026</p>
+          <h3>Landing page and website redesign</h3>
+          <p>Redesigned Paceflow's landing page and main website, and I'm now designing the note-taking web experience. Testing the product every day means I design from the bugs and friction I've actually seen.</p>
+          <div class="links"><a href="https://www.paceflow.io/" target="_blank" rel="noopener">paceflow.io ↗</a></div>
+        </article>
+        <article class="card">
+          <p class="mono tag-line">CDI Tech Education · QA · 2025</p>
+          <h3>Power Apps &amp; SharePoint testing</h3>
+          <p>Tested custom Microsoft Power Apps (filtering, note-taking and ordering systems) and SharePoint sites for a US education company, tracked defects to closure and supported users across Microsoft 365.</p>
+          <ul class="chips"><li>Power Apps</li><li>SharePoint</li><li>Microsoft 365</li></ul>
+        </article>
+        <article class="card card-media">
+          <img src="asset/img/artists-management-system.webp" alt="Artists Management System home screen with navigation for customers, skills, artists, fees and dashboard" width="715" height="440" loading="lazy">
+          <div>
+            <p class="mono tag-line">University project · Full-stack</p>
+            <h3>Artists Management System</h3>
+            <p>A platform connecting artists with clients: customer, artist, skill and fee management behind one dashboard. Where my two worlds, code and art, first met.</p>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <h2>Latest <span class="highlight">Project</span></h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="asset/IMG_2945.PNG" alt="Brand Identity Project">
-                    <div class="gallery-overlay">
-                        <h4>Sketchs</h4>
-                        <p>Beautiful Portraits</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="asset/IMG_2719.JPG" alt="Canvas Art">
-                    <div class="gallery-overlay">
-                        <h4>Canvas Art</h4>
-                        <p>Authentic canvas arts</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="asset/Buildings.png" alt="3D Design">
-                    <div class="gallery-overlay">
-                        <h4>3D Design</h4>
-                        <p>Cool 3D designs</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="asset/image_2025-09-19_15-16-23.png" alt="UI/UX Design">
-                    <div class="gallery-overlay">
-                        <h4>UI/UX Design</h4>
-                        <p>Creative front-end designs</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="asset/image_2025-09-19_15-20-53.png" alt="Web Design">
-                    <div class="gallery-overlay">
-                        <h4>Web Design</h4>
-                        <p>Professional websites</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="asset/image_2025-09-19_15-24-54.png" alt="FullStack Development">
-                    <div class="gallery-overlay">
-                        <h4>Full-Stack system</h4>
-                        <p>Responsive and creative developments</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="asset/image_2025-09-19_15-19-09.png" alt="Logo Design">
-                    <div class="gallery-overlay">
-                        <h4>Form Designs</h4>
-                        <p>Classy form design templates</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- APPROACH -->
+    <section class="section section-tint" id="approach">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow mono">02 · Approach</p>
+          <h2>How I test</h2>
+        </header>
+        <ol class="steps">
+          <li>
+            <span class="mono step-n">01</span>
+            <h3>Learn the flow first</h3>
+            <p>Before breaking anything, I use the feature the way a real user would and write down what "working" should mean.</p>
+          </li>
+          <li>
+            <span class="mono step-n">02</span>
+            <h3>Then try to break it</h3>
+            <p>Edge cases, bad input, other browsers, small screens, and regression checks on everything the change touched.</p>
+          </li>
+          <li>
+            <span class="mono step-n">03</span>
+            <h3>Report it so it gets fixed</h3>
+            <p>Every bug gets clear steps to reproduce, expected vs. actual results and evidence, so a developer can fix it without asking me a question.</p>
+          </li>
+          <li>
+            <span class="mono step-n">04</span>
+            <h3>Close the loop</h3>
+            <p>I verify the fix, and when a flow works but feels wrong, I bring a concrete design suggestion, not just a complaint.</p>
+          </li>
+        </ol>
+      </div>
     </section>
 
-       <!-- Contact Section -->
-<section id="contact" class="contact">
+    <!-- EXPERIENCE -->
+    <section class="section container" id="experience">
+      <header class="section-head">
+        <p class="eyebrow mono">03 · Experience</p>
+        <h2>Where I've worked</h2>
+      </header>
+      <ol class="timeline">
+        <li>
+          <div class="when mono">Apr 2026 – Present</div>
+          <div>
+            <h3>Associate Product Developer &amp; QA Engineer · <span>Paceflow</span></h3>
+            <p>End-to-end QA on features and releases; product and UX design for the platform, its websites and its open-source CLI. Remote.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when mono">Feb 2026 – Present</div>
+          <div>
+            <h3>Ambassador · <span>IDEEZA</span></h3>
+            <p>Community ambassador for a hardware and product-innovation platform; participant in its AI-Assisted Hardware Innovation challenge.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when mono">Jan 2025 – Sep 2025</div>
+          <div>
+            <h3>SharePoint Consultant · <span>CDI Tech Education</span></h3>
+            <p>Testing and defect tracking on Power Apps and SharePoint; Microsoft 365 user support. Remote (Wilson, Virginia, USA).</p>
+          </div>
+        </li>
+        <li>
+          <div class="when mono">Aug 2024 – Feb 2025</div>
+          <div>
+            <h3>.NET Developer Intern · <span>AFRICOM Technologies</span></h3>
+            <p>.NET backend work and manual functional testing of e-commerce solutions; workflow and data-integrity validation on Single Window and BPO platforms. Addis Ababa.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when mono">Oct 2022 – Oct 2026</div>
+          <div>
+            <h3>B.Sc. Computer Science · <span>HiLCoE School of Computer Science &amp; Technology</span></h3>
+            <p>Finalist, International Health Innovation Hackathon 2026. Volunteer mentor to female students in databases, networking and web development.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="skills">
+        <div><h3 class="mono">Testing</h3><p>End-to-end · functional · regression · exploratory · usability · cross-browser · test case design · bug reporting · release checklists</p></div>
+        <div><h3 class="mono">Product &amp; UX</h3><p>Figma · prototyping · UX review · web and terminal UI design · illustration</p></div>
+        <div><h3 class="mono">Development</h3><p>HTML · CSS · JavaScript · Java · C# / .NET · PHP · SQL · Git</p></div>
+        <div><h3 class="mono">Tools</h3><p>Linear · Confluence · GitHub · Slack · SharePoint · Power Apps · Microsoft 365</p></div>
+      </div>
+    </section>
+
+    <!-- ART -->
+    <section class="section section-tint" id="art">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow mono">04 · Off the clock</p>
+          <h2>I'm also an illustrator</h2>
+          <p class="section-sub">Painting and drawing are why I notice the small visual details that make a product feel finished.</p>
+        </header>
+        <div class="art-grid">
+          <figure><img src="asset/img/art-canvas.webp" alt="Acrylic canvas painting of a yellow Volkswagen Beetle on a golden road under swirling patterned clouds" width="1400" height="706" loading="lazy"><figcaption>Canvas painting</figcaption></figure>
+          <figure><img src="asset/img/art-portrait.webp" alt="Colourful mixed-media portrait of a woman beneath a stylised sun" width="775" height="1000" loading="lazy"><figcaption>Mixed-media portrait</figcaption></figure>
+          <figure><img src="asset/img/art-3d-buildings.webp" alt="3D rendered city buildings" width="1400" height="788" loading="lazy"><figcaption>3D study</figcaption></figure>
+        </div>
+        <div class="links">
+          <a href="https://f1k1r1b1srat.github.io/My-Art-Portfolio-Website/" target="_blank" rel="noopener">Full art gallery ↗</a>
+          <a href="https://instagram.com/fikir.bisrat" target="_blank" rel="noopener">Instagram ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section container contact" id="contact">
+      <div class="contact-intro">
+        <p class="eyebrow mono">05 · Contact</p>
+        <h2>Send me your app. I'll tell you the first three things I'd fix.</h2>
+        <p>Open to QA and product roles, remote. I overlap with US and European working hours.</p>
+        <ul class="contact-list">
+          <li><span class="mono label">Email</span><a href="mailto:fikirbisrat0@gmail.com">fikirbisrat0@gmail.com</a></li>
+          <li><span class="mono label">LinkedIn</span><a href="https://www.linkedin.com/in/fikir-bisrat-408785326" target="_blank" rel="noopener">fikir-bisrat-408785326</a></li>
+          <li><span class="mono label">Upwork</span><a href="https://www.upwork.com/freelancers/~01dff4a7ccb112e91d" target="_blank" rel="noopener">Hire me on Upwork</a></li>
+          <li><span class="mono label">Telegram</span><a href="https://t.me/Av0cad0rableee" target="_blank" rel="noopener">@Av0cad0rableee</a></li>
+        </ul>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <label>Name<input type="text" name="from_name" autocomplete="name" required></label>
+        <label>Email<input type="email" name="reply_to" autocomplete="email" required></label>
+        <label>Subject<input type="text" name="subject" required></label>
+        <label>Message<textarea name="message" rows="5" required></textarea></label>
+        <input type="hidden" name="mobile" value="">
+        <button type="submit" class="btn">Send message</button>
+        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="container">
-        <h2>Contact <span class="highlight">Me!</span></h2>
-        <form class="contact-form" id="contactForm">
-            <div class="form-row">
-                <div class="form-group">
-                    <input type="text" id="fullName" name="from_name" placeholder="Full Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="reply_to" placeholder="Email Address" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="subject" name="subject" placeholder="Email Subject" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
-            </div>
-            <button type="submit" class="cta-button">Send Message</button>
-            <div id="formStatus" class="form-status"></div>
-        </form>
+      <p>© <span id="year">2026</span> Fikir Bisrat · Addis Ababa, Ethiopia</p>
+      <p class="mono">Built by hand. Tested by me.</p>
     </div>
-</section>
+  </footer>
 
-    <!-- Flip Book Modal for detailed about information -->
-    <div id="flipBookModal" class="flip-book-modal">
-        <div class="flip-book-container">
-            <button class="close-flip-book">&times;</button>
-            <div class="flip-book">
-                <div class="page-container">
-                    <!-- Page 1 -->
-                    <div class="page active" data-page="1">
-                        <div class="page-content">
-                            <h2>About Fikir Bisrat</h2>
-                            <div class="page-image">
-                                <img src="asset/sticker.webp" alt="Fikir Bisrat">
-                            </div>
-                            <p>Welcome to my story! I'm Fikir Bisrat, a passionate fullStack developer and technical artist from Addis Ababa, Ethiopia.</p>
-                            <div class="page-number">1 / 5</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Page 2 -->
-                    <div class="page" data-page="2">
-                        <div class="page-content">
-                            <h2>My Journey</h2>
-                            <p>Currently in my fourth year at Hilcoe College, I've discovered my true calling in the intersection of technology and creativity. My journey began with a simple curiosity about how digital worlds are created.</p>
-                            <p>Through countless hours of learning, experimenting, and creating, I've developed expertise in both front-end and back-end development, while maintaining my artistic vision.</p>
-                            <div class="page-number">2 / 5</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Page 3 -->
-                    <div class="page" data-page="3">
-                        <div class="page-content">
-                            <h2>Technical Skills</h2>
-                            <div class="skills-grid">
-                                <div class="skill-item">
-                                    <i class="fas fa-code"></i>
-                                    <h4>Full-Stack Development</h4>
-                                    <p>React, Node.js, MongoDB, Express</p>
-                                </div>
-                                <div class="skill-item">
-                                    <i class="fas fa-palette"></i>
-                                    <h4>Digital Art</h4>
-                                    <p>3D Modeling, UI/UX Design, Illustration</p>
-                                </div>
-                                <div class="skill-item">
-                                    <i class="fas fa-mobile-alt"></i>
-                                    <h4>Responsive Design</h4>
-                                    <p>Mobile-first approach, CSS Grid, Flexbox</p>
-                                </div>
-                            </div>
-                            <div class="page-number">3 / 5</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Page 4 -->
-                    <div class="page" data-page="4">
-                        <div class="page-content">
-                            <h2>Philosophy & Vision</h2>
-                            <p>I believe that technology should be beautiful, functional, and accessible. My approach combines technical excellence with artistic sensibility to create digital experiences that not only work flawlessly but also inspire and delight users.</p>
-                            <p>As a freelancer, I've had the privilege of working with diverse clients, each project teaching me something new and pushing the boundaries of what's possible in web development and digital art.</p>
-                            <div class="page-number">4 / 5</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Page 5 -->
-                    <div class="page" data-page="5">
-                        <div class="page-content">
-                            <h2>Let's Create Together</h2>
-                            <p>I'm always excited about new challenges and opportunities to create something amazing. Whether you need a full-stack web application, stunning digital art, or a combination of both, I'm here to bring your vision to life.</p>
-                            <div class="contact-info">
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>fikir.bisrat3@gmail.com</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Addis Ababa, Ethiopia</span>
-                                </div>
-                            </div>
-                            <p class="closing-text">Thank you for taking the time to learn about me. Let's create something extraordinary together!</p>
-                            <div class="page-number">5 / 5</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Navigation controls -->
-                <div class="flip-controls">
-                    <button class="prev-page" id="prevPage">
-                        <i class="fas fa-chevron-left"></i>
-                        Previous
-                    </button>
-                    <button class="next-page" id="nextPage">
-                        Next
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-    <script>
-        function openFlipBookModal() {
-            document.getElementById("flipBookModal").style.display = "block";
-        }
-
-        document.querySelector(".close-flip-book").addEventListener("click", function() {
-            document.getElementById("flipBookModal").style.display = "none";
-        });
-
-        document.getElementById("prevPage").addEventListener("click", function() {
-            const pages = document.querySelectorAll(".page");
-            let currentPage = document.querySelector(".page.active");
-            let currentPageIndex = Array.from(pages).indexOf(currentPage);
-
-            if (currentPageIndex > 0) {
-                currentPage.classList.remove("active");
-                pages[currentPageIndex - 1].classList.add("active");
-            }
-        });
-
-        document.getElementById("nextPage").addEventListener("click", function() {
-            const pages = document.querySelectorAll(".page");
-            let currentPage = document.querySelector(".page.active");
-            let currentPageIndex = Array.from(pages).indexOf(currentPage);
-
-            if (currentPageIndex < pages.length - 1) {
-                currentPage.classList.remove("active");
-                pages[currentPageIndex + 1].classList.add("active");
-            }
-        });
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,307 +1,148 @@
-// Mobile Navigation Toggle
-const hamburger = document.querySelector(".hamburger")
-const navMenu = document.querySelector(".nav-menu")
+document.documentElement.classList.add("js")
 
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active")
-  navMenu.classList.toggle("active")
-})
+// Mobile menu
+const toggle = document.querySelector(".nav-toggle")
+const menu = document.getElementById("nav-menu")
+if (toggle && menu) {
+  toggle.addEventListener("click", () => {
+    const open = menu.classList.toggle("open")
+    toggle.setAttribute("aria-expanded", String(open))
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu")
+  })
+  menu.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      menu.classList.remove("open")
+      toggle.setAttribute("aria-expanded", "false")
+      toggle.setAttribute("aria-label", "Open menu")
+    }),
+  )
+}
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll(".nav-link").forEach((n) =>
-  n.addEventListener("click", () => {
-    hamburger.classList.remove("active")
-    navMenu.classList.remove("active")
-  }),
-)
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault()
-    const target = document.querySelector(this.getAttribute("href"))
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+// Highlight the nav link for the section in view
+const navLinks = [...document.querySelectorAll('.nav-menu a[href^="#"]')]
+const sections = navLinks.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean)
+if ("IntersectionObserver" in window && sections.length) {
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${entry.target.id}`))
       })
-    }
-  })
-})
-
-// Active navigation link highlighting
-window.addEventListener("scroll", () => {
-  let current = "";
-  const sections = document.querySelectorAll("section");
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (scrollY >= sectionTop - 200) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  document.querySelectorAll(".nav-link").forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
-  });
-});
-
-// Load and initialize EmailJS
-(function() {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js';
-    script.onload = function() {
-        emailjs.init("57fGguTWnCl-wJIuq");
-        setupContactForm();
-    };
-    document.head.appendChild(script);
-})();
-
-function setupContactForm() {
-    const form = document.getElementById("contactForm");
-    if (!form) return;
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        
-        const status = document.getElementById("formStatus");
-        const button = this.querySelector('button[type="submit"]');
-        const originalText = button.textContent;
-
-        button.textContent = "Sending...";
-        button.disabled = true;
-        status.textContent = "";
-        status.className = "form-status";
-
-        // Add timestamp for template
-        const timeInput = document.createElement('input');
-        timeInput.type = 'hidden';
-        timeInput.name = 'time';
-        timeInput.value = new Date().toLocaleString();
-        this.appendChild(timeInput);
-
-        emailjs.sendForm("service_vf74rd3", "template_4nxhei7", this)
-            .then(() => {
-                status.textContent = "✅ Thank you! Message sent successfully.";
-                status.className = "form-status success";
-                this.reset();
-            })
-            .catch((error) => {
-                console.error("EmailJS Error:", error);
-                status.textContent = "❌ Failed to send message. Please try again.";
-                status.className = "form-status error";
-            })
-            .finally(() => {
-                timeInput.remove();
-                button.textContent = originalText;
-                button.disabled = false;
-                setTimeout(() => status.textContent = "", 5000);
-            });
-    });
+    },
+    { rootMargin: "-45% 0px -50% 0px" },
+  )
+  sections.forEach((s) => navObserver.observe(s))
 }
 
-// Add scroll effect to navbar
-window.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar")
-  if (window.scrollY > 100) {
-    navbar.style.background = "rgba(63, 46, 15, 0.7)"
-  } else {
-    navbar.style.background = "rgba(5, 5, 4, 0.95)"
-  }
-})
-
-// Animate elements on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-}
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1"
-      entry.target.style.transform = "translateY(0)"
-    }
-  })
-}, observerOptions)
-
-// Observe all sections for animation
-document.querySelectorAll("section").forEach((section) => {
-  section.style.opacity = "0"
-  section.style.transform = "translateY(30px)"
-  section.style.transition = "opacity 0.6s ease, transform 0.6s ease"
-  observer.observe(section)
-})
-
-// Gallery item hover effects
-document.querySelectorAll(".gallery-item").forEach((item) => {
-  item.addEventListener("mouseenter", function () {
-    this.style.transform = "scale(1.05)"
-  })
-
-  item.addEventListener("mouseleave", function () {
-    this.style.transform = "scale(1)"
-  })
-})
-
-// Service card animations
-document.querySelectorAll(".service-card").forEach((card) => {
-  card.addEventListener("mouseenter", function () {
-    this.style.transform = "translateY(-10px)"
-    this.style.boxShadow = "0 20px 40px rgba(0, 0, 0, 0.2)"
-  })
-
-  card.addEventListener("mouseleave", function () {
-    this.style.transform = "translateY(0)"
-    this.style.boxShadow = "none"
-  })
-})
-
-// Character image hover effect to switch between sticker.webp and sticker2.webp
-const characterImg = document.querySelector(".character-img")
-const characterCircle = document.querySelector(".character-circle")
-
-if (characterImg && characterCircle) {
-  const originalSrc = "asset/sticker.webp"
-  const hoverSrc = "asset/sticker2.webp"
-
-  characterCircle.addEventListener("mouseenter", () => {
-    characterImg.src = hoverSrc
-  })
-
-  characterCircle.addEventListener("mouseleave", () => {
-    characterImg.src = originalSrc
+// Gentle reveal on scroll
+const revealTargets = document.querySelectorAll(".section-head, .feature, .card, .steps li, .timeline li, .art-grid figure")
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in")
+          obs.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+  )
+  revealTargets.forEach((el) => {
+    el.classList.add("reveal")
+    revealObserver.observe(el)
   })
 }
 
-// About section image hover effect to switch between sticker.webp and sticker2.webp
-const aboutImg = document.querySelector(".about-image img")
-const aboutImageContainer = document.querySelector(".about-image")
-
-if (aboutImg && aboutImageContainer) {
-  const originalSrc = "asset/sticker.webp"
-  const hoverSrc = "asset/sticker2.webp"
-
-  aboutImageContainer.addEventListener("mouseenter", () => {
-    aboutImg.src = hoverSrc
-  })
-
-  aboutImageContainer.addEventListener("mouseleave", () => {
-    aboutImg.src = originalSrc
-  })
+// Sticker swaps to the second drawing on hover
+const sticker = document.querySelector(".sticker")
+if (sticker && sticker.dataset.hover) {
+  const original = sticker.getAttribute("src")
+  const alt = sticker.dataset.hover
+  new Image().src = alt
+  const frame = sticker.closest(".sticker-frame")
+  frame.addEventListener("mouseenter", () => (sticker.src = alt))
+  frame.addEventListener("mouseleave", () => (sticker.src = original))
 }
 
-// Initialize Three.js scene for 3D background elements
-function init3DBackground() {
-  const canvas = document.getElementById("threejs-canvas")
-  if (!canvas) return
-
-  const scene = new window.THREE.Scene()
-  const camera = new window.THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-  const renderer = new window.THREE.WebGLRenderer({ canvas: canvas, alpha: true })
-
-  renderer.setSize(window.innerWidth, window.innerHeight)
-  renderer.setClearColor(0x000000, 0) // Transparent background
-
-  // Create floating geometric shapes with warm colors matching the theme
-  const shapes = []
-  const colors = [0xff6b35, 0xd2691e, 0x8b4513, 0x2c1810] // Orange and brown tones
-
-  // Create different geometric shapes
-  const geometries = [
-    new window.THREE.BoxGeometry(1, 1, 1),
-    new window.THREE.SphereGeometry(0.7, 8, 6),
-    new window.THREE.ConeGeometry(0.7, 1.5, 6),
-    new window.THREE.OctahedronGeometry(0.8),
+// Featured project screenshot tabs
+document.querySelectorAll(".feature").forEach((feature) => {
+  const shot = feature.querySelector(".shot")
+  const img = shot && shot.querySelector("img")
+  const tabs = feature.querySelectorAll(".shot-tabs button")
+  if (!img || !tabs.length) return
+  const srcs = shot.dataset.shots.split(",")
+  const alts = [
+    "Paceflow terminal dashboard prototype showing the Verdict tab: a model comparison table with colour-coded mainline reach and bug rate",
+    "Paceflow terminal dashboard prototype showing the Delivery tab: commits, PR reach, mainline and merge rates per AI model",
   ]
+  srcs.forEach((s) => (new Image().src = s))
+  tabs.forEach((tab) =>
+    tab.addEventListener("click", () => {
+      const i = Number(tab.dataset.i)
+      tabs.forEach((t) => t.setAttribute("aria-selected", String(t === tab)))
+      img.style.opacity = "0"
+      setTimeout(() => {
+        img.src = srcs[i]
+        img.alt = alts[i] || img.alt
+        img.style.opacity = "1"
+      }, 150)
+    }),
+  )
+})
 
-  // Create 15 floating shapes
-  for (let i = 0; i < 15; i++) {
-    const geometry = geometries[Math.floor(Math.random() * geometries.length)]
-    const material = new window.THREE.MeshBasicMaterial({
-      color: colors[Math.floor(Math.random() * colors.length)],
-      transparent: true,
-      opacity: 0.1,
-    })
+// Contact form via EmailJS (same account, service and template as before)
+const form = document.getElementById("contactForm")
+const status = document.getElementById("formStatus")
+let emailReady = false
 
-    const shape = new window.THREE.Mesh(geometry, material)
+function initEmail() {
+  if (window.emailjs && !emailReady) {
+    window.emailjs.init("57fGguTWnCl-wJIuq")
+    emailReady = true
+  }
+  return emailReady
+}
 
-    // Random positioning
-    shape.position.x = (Math.random() - 0.5) * 50
-    shape.position.y = (Math.random() - 0.5) * 50
-    shape.position.z = (Math.random() - 0.5) * 30
-
-    // Random rotation
-    shape.rotation.x = Math.random() * Math.PI
-    shape.rotation.y = Math.random() * Math.PI
-
-    // Store animation properties
-    shape.userData = {
-      rotationSpeed: {
-        x: (Math.random() - 0.5) * 0.02,
-        y: (Math.random() - 0.5) * 0.02,
-        z: (Math.random() - 0.5) * 0.02,
-      },
-      floatSpeed: Math.random() * 0.01 + 0.005,
-      floatRange: Math.random() * 2 + 1,
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    const button = form.querySelector('button[type="submit"]')
+    if (!initEmail()) {
+      status.textContent = "The form couldn't load. Please email fikirbisrat0@gmail.com directly."
+      status.className = "form-status error"
+      return
     }
+    const original = button.textContent
+    button.textContent = "Sending…"
+    button.disabled = true
+    status.textContent = ""
+    status.className = "form-status"
 
-    shapes.push(shape)
-    scene.add(shape)
-  }
+    const time = document.createElement("input")
+    time.type = "hidden"
+    time.name = "time"
+    time.value = new Date().toLocaleString()
+    form.appendChild(time)
 
-  camera.position.z = 20
-
-  // Animation loop
-  function animate() {
-    requestAnimationFrame(animate)
-
-    // Animate each shape
-    shapes.forEach((shape, index) => {
-      // Rotation animation
-      shape.rotation.x += shape.userData.rotationSpeed.x
-      shape.rotation.y += shape.userData.rotationSpeed.y
-      shape.rotation.z += shape.userData.rotationSpeed.z
-
-      // Floating animation
-      shape.position.y += Math.sin(Date.now() * shape.userData.floatSpeed + index) * 0.01
-    })
-
-    renderer.render(scene, camera)
-  }
-
-  animate()
-
-  // Handle window resize
-  window.addEventListener("resize", () => {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
+    window.emailjs
+      .sendForm("service_vf74rd3", "template_4nxhei7", form)
+      .then(() => {
+        status.textContent = "Thanks! Your message is on its way."
+        status.className = "form-status success"
+        form.reset()
+      })
+      .catch(() => {
+        status.textContent = "That didn't send. Please try again or email fikirbisrat0@gmail.com."
+        status.className = "form-status error"
+      })
+      .finally(() => {
+        time.remove()
+        button.textContent = original
+        button.disabled = false
+      })
   })
 }
 
-// Initialize 3D background when page loads
-window.addEventListener("load", () => {
-  // Small delay to ensure Three.js is loaded
-  setTimeout(init3DBackground, 100)
-})
-console.log("🔄 DEBUG: Checking contact form setup...");
-
-setTimeout(() => {
-    const form = document.getElementById("contactForm");
-    const status = document.getElementById("formStatus");
-    
-    console.log("📝 Contact Form Element:", form);
-    console.log("📊 Status Element:", status);
-    console.log("🚀 EmailJS Loaded:", typeof emailjs !== 'undefined');
-    
-    if (form) {
-        console.log("✅ Form found, checking event listeners...");
-    } else {
-        console.error("❌ Form not found! Check HTML ID");
-    }
-}, 1000);
+const year = document.getElementById("year")
+if (year) year.textContent = new Date().getFullYear()
